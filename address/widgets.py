@@ -66,7 +66,7 @@ class AddressWidget(forms.TextInput):
             ad = {}
         elif isinstance(value, dict):
             ad = value
-        elif isinstance(value, uuid):
+        elif isinstance(value, uuid.UUID):
             ad = Address.objects.get(pk=value)
             ad = ad.as_dict()
         else:
