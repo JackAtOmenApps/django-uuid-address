@@ -163,6 +163,7 @@ def to_python(value):
 
 @python_2_unicode_compatible
 class Country(models.Model):
+    id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=40, unique=True, blank=True)
     code = models.CharField(max_length=2, blank=True)  # not unique as there are duplicates (IT)
 
@@ -180,6 +181,7 @@ class Country(models.Model):
 
 @python_2_unicode_compatible
 class State(models.Model):
+    id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=165, blank=True)
     code = models.CharField(max_length=3, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='states')
@@ -206,6 +208,7 @@ class State(models.Model):
 
 @python_2_unicode_compatible
 class Locality(models.Model):
+    id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=165, blank=True)
     postal_code = models.CharField(max_length=10, blank=True)
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='localities')
@@ -236,6 +239,7 @@ class Locality(models.Model):
 
 @python_2_unicode_compatible
 class Address(models.Model):
+    id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     street_number = models.CharField(max_length=20, blank=True)
     route = models.CharField(max_length=100, blank=True)
     locality = models.ForeignKey(Locality, on_delete=models.CASCADE, related_name='addresses', blank=True, null=True)
