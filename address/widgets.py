@@ -1,4 +1,5 @@
 import sys
+import uuid
 
 from django import forms
 from django.conf import settings
@@ -65,7 +66,7 @@ class AddressWidget(forms.TextInput):
             ad = {}
         elif isinstance(value, dict):
             ad = value
-        elif isinstance(value, (int, long)):
+        elif isinstance(value, uuid):
             ad = Address.objects.get(pk=value)
             ad = ad.as_dict()
         else:
