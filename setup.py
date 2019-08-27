@@ -12,14 +12,14 @@ if sys.argv[-1] == 'tag':
     sys.exit()
 
 setup(
-    name='django-address',
+    name='django-uuid-address',
     version=version,
-    author='Luke Hodkinson',
+    author='Luke Hodkinson, Jack Linke',
     author_email='furious.luke@gmail.com',
     maintainer='Luke Hodkinson',
     maintainer_email='furious.luke@gmail.com',
-    url='https://github.com/furious-luke/django-address',
-    description='A django application for describing addresses.',
+    url='https://github.com/OmenApps/django-uuid-address',
+    description='A django application for describing addresses. Forked and modified to use UUIDs.',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
     classifiers=[
         'Development Status :: 3 - Alpha',

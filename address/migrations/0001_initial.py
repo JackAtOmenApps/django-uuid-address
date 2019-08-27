@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import uuid
 from django.db import models, migrations
 
 
@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Address',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.UUIDField(verbose_name='ID', primary_key=True, default=uuid.uuid4, editable=False)),
                 ('street_number', models.CharField(max_length=20, blank=True)),
                 ('route', models.CharField(max_length=100, blank=True)),
                 ('raw', models.CharField(max_length=200)),
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Country',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.UUIDField(verbose_name='ID', primary_key=True, default=uuid.uuid4, editable=False)),
                 ('name', models.CharField(unique=True, max_length=40, blank=True)),
                 ('code', models.CharField(max_length=2, blank=True)),
             ],
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Locality',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.UUIDField(verbose_name='ID', primary_key=True, default=uuid.uuid4, editable=False)),
                 ('name', models.CharField(max_length=165, blank=True)),
                 ('postal_code', models.CharField(max_length=10, blank=True)),
             ],
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='State',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.UUIDField(verbose_name='ID', primary_key=True, default=uuid.uuid4, editable=False)),
                 ('name', models.CharField(max_length=165, blank=True)),
                 ('code', models.CharField(max_length=3, blank=True)),
                 ('country', models.ForeignKey(on_delete=models.CASCADE, related_name='states', to='address.Country')),
