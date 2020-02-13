@@ -5,7 +5,6 @@ import uuid
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.fields.related import ForeignObject
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -16,10 +15,9 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
-if sys.version > '3':
-    long = int
-    basestring = (str, bytes)
-    unicode = str
+long = int
+basestring = (str, bytes)
+unicode = str
 
 __all__ = ['Country', 'State', 'Locality', 'Address', 'AddressField']
 
@@ -164,7 +162,6 @@ def to_python(value):
 ##
 
 
-@python_2_unicode_compatible
 class Country(models.Model):
     id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=40, unique=True, blank=True)
@@ -182,7 +179,6 @@ class Country(models.Model):
 ##
 
 
-@python_2_unicode_compatible
 class State(models.Model):
     id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=165, blank=True)
@@ -209,7 +205,6 @@ class State(models.Model):
 ##
 
 
-@python_2_unicode_compatible
 class Locality(models.Model):
     id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=165, blank=True)
@@ -240,7 +235,6 @@ class Locality(models.Model):
 ##
 
 
-@python_2_unicode_compatible
 class Address(models.Model):
     id = models.UUIDField(_('ID'), primary_key=True, default=uuid.uuid4, editable=False)
     street_number = models.CharField(max_length=20, blank=True)

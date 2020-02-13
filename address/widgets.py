@@ -8,10 +8,9 @@ from django.utils.safestring import mark_safe
 
 from .models import Address
 
-if sys.version > '3':
-    long = int
-    basestring = (str, bytes)
-    unicode = str
+long = int
+basestring = (str, bytes)
+unicode = str
 
 USE_DJANGO_JQUERY = getattr(settings, 'USE_DJANGO_JQUERY', False)
 JQUERY_URL = getattr(settings, 'JQUERY_URL', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
