@@ -134,8 +134,7 @@ def to_python(value):
     if isinstance(value, Address):
         return value
 
-    # If we have an integer, assume it is a model primary key. This is mostly for
-    # Django being a cunt.
+    # If we have an integer, assume it is a model primary key.
     elif isinstance(value, (int, long)):
         return value
 
@@ -308,6 +307,7 @@ class AddressField(models.ForeignKey):
 
     def __init__(self, *args, **kwargs):
         kwargs['to'] = 'address.Address'
+        kwargs['on_delete'] = models.CASCADE
         super(AddressField, self).__init__(*args, **kwargs)
 
     def contribute_to_class(self, cls, name, private_only=False):
